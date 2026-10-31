@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speebsite</title>
+    <link rel="stylesheet" href="{% static 'pages/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'pages/css/mobile.css' %}" media="(max-width: 800px)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Google+Sans+Flex:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'pages/images/corgi.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <script>
+    if (window.matchMedia("(max-width: 800px)").matches) document.body.classList.add("mobile");
+    </script>
+    <div class="bg-layer" id="bg-a"></div>
+    <div class="bg-layer" id="bg-b"></div>
+    <canvas id="rain" data-bg="{% static 'pages/images/vancouver.jpg' %}"></canvas>
+
+    <div class="scrollbar" id="scrollbar" aria-hidden="true">
+        <div class="scrollbar-thumb" id="scrollbar-thumb"></div>
+    </div>
+
+    <div class="nameplate">
+        <h1 class="site-title">@Speeb04</h1>
+
+        <div class="site-links">
+            <a href="https://github.com/Speeb04" target="_blank" rel="noopener" aria-label="GitHub, Speeb04">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                    </svg>
+                <span>@Speeb04</span>
+            </a>
+            <a href="https://instagram.com/Speeb04_" target="_blank" rel="noopener" aria-label="Instagram, Speeb0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle>
+                </svg>
+                <span>@Speeb04_</span>
+            </a>
+            <span class="handle">
+                <img class="handle-icon" src="{% static 'pages/images/discord.svg' %}" alt="">
+                <span>@speeb04</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="greeting-box">
+        <p class="greeting" id="greeting"></p>
+        <p class="city-fact" id="city-fact"></p>
+    </div>
+
+    <p class="location" id="location">VANCOUVER, BC</p>
+
+    <div class="glass-card" id="weather">
+        <div class="weather-icon">
+            <img id="weather-icon" alt="" data-base="{% static 'pages/icons/' %}">
+        </div>
+        <div class="weather-info">
+            <p class="weather-desc" id="weather-desc">Loading…</p>
+            <p class="weather-range" id="weather-range"></p>
+        </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+
+    <div class="nameplate">
+        <h1 class="site-title">@Speeb04<span class="about-suffix"> - About Me</span></h1>
+            <div class="blurbs">
+                <p class="about-blurb">
+                    🍁 Canadian data/computer scientist born in beautiful Vancouver, British Columbia.
+                    I also especially adore Corgis.
+                </p>
+                <p class="music-blurb">🎵 A bit about the music that I've been listening to</p>
+            </div>
+    </div>
+
+    <div class="interests">
+        <h2 class="interests-title">My interests</h2>
+        <ul>
+            <li class="interest">
+                <span class="interest-name">• Hiking</span>
+                <div class="interest-more">
+                    <p class="interest-desc">
+                        As the coast mountains surround my hometown of Vancouver,
+                        the beautiful yet challenging hikes call to me for the next summit.
+                        In particular, the Stawamus Chief and Bowen Lookout are among my favorites in the area.
+                        <img class="interest-inline-pic" src="{% static 'pages/images/interest-1.jpg' %}" alt="" loading="lazy">
+                    </p>
+                </div>
+            </li>
+            <li class="interest">
+                <span class="interest-name">• Workouts/Sports</span>
+                <div class="interest-more">
+                    <p class="interest-desc">
+                        Avid lifter. In the summers I like badminton, throwing frisbees, swimming, and hiking of course.
+                        In the winters I'm always skiing and hopefully not crashing.
+                        <img class="interest-inline-pic" src="{% static 'pages/images/interest-2.jpg' %}" alt="" loading="lazy">
+                    </p>
+                </div>
+            </li>
+            <li class="interest">
+                <span class="interest-name">• Computers</span>
+                <div class="interest-more">
+                    <p class="interest-desc">
+                        I've always loved computers. They're cool.
+                        They're my gateway to video games, communications, and an outlet for my creativity.
+                        Learning to program just felt like finally playing the instrument instead of only enjoying the music.
+                        <img class="interest-inline-pic" src="{% static 'pages/images/interest-3.jpg' %}" alt="" loading="lazy">
+                    </p>
+                </div>
+            </li>
+            <li class="interest">
+                <span class="interest-name">• Photography</span>
+                <div class="interest-more">
+                    <p class="interest-desc">
+                        Compositions of images are the purest form of geometry in nature.
+                        Framing and capturing the snapshots of history reminds me that rather than describing the human
+                        condition in terms of our senses, it's more apt to describe it as the act of <i>experiencing.</i>
+                        <img class="interest-inline-pic" src="{% static 'pages/images/interest-4.jpg' %}" alt="" loading="lazy">
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="interest-pics" aria-hidden="true">
+        <img src="{% static 'pages/images/interest-1.jpg' %}" alt="">
+        <img src="{% static 'pages/images/interest-2.jpg' %}" alt="">
+        <img src="{% static 'pages/images/interest-3.jpg' %}" alt="">
+        <img src="{% static 'pages/images/interest-4.jpg' %}" alt="">
+    </div>
+
+    <div class="music" id="music">
+        <section class="music-col">
+            <h2 class="music-title">On repeat lately</h2>
+            <p class="music-sub">Top tracks · last 4 weeks</p>
+            <ol class="music-list" id="music-tracks"></ol>
+        </section>
+        <section class="music-col">
+            <h2 class="music-title">Top artists</h2>
+            <p class="music-sub">Past 4 weeks</p>
+            <ol class="music-list" id="music-artists"></ol>
+        </section>
+            <div class="music-divider"></div>
+
+        <section class="music-col outreach">
+            <h2 class="music-title">Outreach</h2>
+            <p class="music-sub">Things I care about</p>
+            <ul class="outreach-list">
+                <li>
+                    <a class="outreach-name" href="https://madeinca.ca/" target="_blank" rel="noopener">🍁 Made in CA</a>
+                    <p class="outreach-desc">It's important to buy Canadian nowadays. Find out what's being made in Canada!</p>
+                </li>
+                <li>
+                    <a class="outreach-name" href="https://savethecbcforever.ca/" target="_blank" rel="noopener">🍁 Save The CBC</a>
+                    <p class="outreach-desc">The CBC helped build Canada, and it ensures that essential stories have a platform to be shared.</p>
+                </li>
+            </ul>
+            <img class="outreach-pic" src="{% static 'pages/images/outreach.jpg' %}" alt="">
+        </section>
+    </div>
+
+    <script src="{% static 'pages/js/music.js' %}"></script>
+
+    <script>
+        window.CITIES = [
+            {
+                name: "VANCOUVER, BC", short: "Vancouver", tz: "America/Vancouver",
+                lat: 49.2827, lon: -123.1207,
+                bg: "{% static 'pages/images/vancouver.jpg' %}",
+                facts: [
+                "Vancouver is located in British Columbia on Canada's west coast, between the Pacific Ocean and the Coast Mountains.",
+                "Vancouver is named after Captain George Vancouver, a British naval officer who explored the region in the late 18th century.",
+                "Vancouver officially became a city in 1886.",
+                "The Great Vancouver Fire destroyed much of the young city just two months after its incorporation in 1886.",
+                "Vancouver's nickname, 'Hollywood North,' comes from its large film and television production industry.",
+                "Vancouver is one of the major film and television production centres in North America.",
+                "Stanley Park is larger than New York City's Central Park.",
+                "Stanley Park covers approximately 400 hectares, making it one of Vancouver's largest urban green spaces.",
+                "The Stanley Park Seawall is part of one of the world's longest uninterrupted waterfront paths.",
+                "Vancouver's famous seawall attracts cyclists, joggers, walkers, and rollerbladers throughout the year.",
+                "The Vancouver Aquarium is located inside Stanley Park.",
+                "The nine totem poles at Brockton Point are among Stanley Park's most recognizable attractions.",
+                "The totem poles at Stanley Park represent Indigenous cultures and artistic traditions from the Pacific Northwest.",
+                "Vancouver's oldest neighbourhood, Gastown, is famous for its historic architecture and cobblestone-style streets.",
+                "Gastown's steam clock uses steam power to produce its distinctive whistle and release steam.",
+                "Despite its old-fashioned appearance, the Gastown Steam Clock was built in 1977.",
+                "The Vancouver Public Library's Central Branch was designed to resemble the Colosseum in Rome.",
+                "Vancouver's public library system includes a striking central building in the city's downtown core.",
+                "Canada Place is recognizable by its five white sails, which resemble a ship.",
+                "Canada Place serves as a major cruise ship terminal and hosts events throughout the year.",
+                "The Vancouver Convention Centre has a living roof covered with thousands of plants.",
+                "The Vancouver Convention Centre's living roof provides habitat for birds and insects.",
+                "Vancouver hosted the Winter Olympics in 2010 alongside the nearby resort municipality of Whistler.",
+                "The 2010 Winter Olympics brought the world-famous Olympic Cauldron to Vancouver's waterfront.",
+                "The Olympic Cauldron is located near Jack Poole Plaza, overlooking Burrard Inlet.",
+                "The Vancouver 2010 Olympic and Paralympic Games used the motto 'With Glowing Hearts.'",
+                "Richmond's Olympic Oval, built for the 2010 Games, was originally designed for speed skating.",
+                "Vancouver's SkyTrain system is one of the world's longest automated rapid transit networks.",
+                "The SkyTrain's Expo Line began operating in 1985, making it one of the earliest automated urban rail systems.",
+                "Vancouver's SkyTrain trains operate without drivers on several of their rapid transit lines.",
+                "The Canada Line connects downtown Vancouver with Vancouver International Airport and Richmond.",
+                "Vancouver International Airport is commonly known by its airport code, YVR.",
+                "YVR has repeatedly received international recognition for its passenger experience and airport services.",
+                "Vancouver's mild coastal climate makes it one of Canada's warmest major cities in winter.",
+                "Vancouver receives substantial rainfall, which helps maintain its lush forests and green spaces.",
+                "Snowfall in Vancouver is generally less frequent than in many other major Canadian cities.",
+                "Vancouver's rainy reputation has earned it the playful nickname 'Raincouver.'",
+                "Vancouver's coastal mountains can sometimes be seen covered in snow while downtown remains relatively mild.",
+                "Grouse Mountain is a popular outdoor destination just north of Vancouver.",
+                "Grouse Mountain is famous for its winter skiing, summer hiking, and panoramic city views.",
+                "The Grouse Grind is a steep hiking trail often called 'Mother Nature's Stairmaster.'",
+                "The Grouse Grind climbs roughly 800 metres in elevation over approximately 2.9 kilometres.",
+                "Lynn Canyon Park in North Vancouver features a suspension bridge that crosses a forested canyon.",
+                "The Capilano Suspension Bridge stretches across a deep canyon surrounded by temperate rainforest.",
+                "Vancouver's surrounding region contains some of the world's northernmost coastal temperate rainforests.",
+                "Pacific Spirit Regional Park protects a large area of forest near the University of British Columbia.",
+                "The University of British Columbia's Vancouver campus sits on the traditional, ancestral, and unceded territory of the Musqueam people.",
+                "UBC's Museum of Anthropology is internationally known for its collections of Indigenous art and cultural objects.",
+                "The Museum of Anthropology building was designed by architect Arthur Erickson.",
+                "Wreck Beach near UBC is Vancouver's best-known clothing-optional beach.",
+                "Vancouver has several major beaches, including English Bay Beach, Kitsilano Beach, and Jericho Beach.",
+                "Kitsilano Beach is often called 'Kits Beach' by locals.",
+                "Kitsilano Pool is a heated saltwater swimming pool located beside the ocean.",
+                "English Bay Beach hosts the annual Celebration of Light fireworks festival.",
+                "The Celebration of Light is an international fireworks competition held over English Bay.",
+                "Vancouver's annual Polar Bear Swim takes place at English Bay on New Year's Day.",
+                "Granville Island is a popular destination for food, art, shopping, and waterfront views.",
+                "Despite its name, Granville Island is a peninsula rather than a true island.",
+                "Granville Island Public Market sells fresh produce, seafood, baked goods, and specialty foods.",
+                "Vancouver has a thriving craft beer scene, with many breweries concentrated around East Vancouver.",
+                "The Mount Pleasant neighbourhood is particularly well known for its breweries, cafes, and creative businesses.",
+                "Vancouver's Chinatown is one of the oldest historic Chinatowns in North America.",
+                "The Dr. Sun Yat-Sen Classical Chinese Garden in Vancouver was the first full-scale classical Chinese garden built outside China.",
+                "Vancouver's Chinatown features traditional architecture, historic storefronts, and Chinese cultural landmarks.",
+                "Punjabi Market, also known as Little India, is a historic South Asian commercial district in Vancouver.",
+                "Commercial Drive is known for its independent shops, restaurants, cafes, and multicultural atmosphere.",
+                "Vancouver's West End is a densely populated neighbourhood with leafy streets near Stanley Park.",
+                "Davie Village is a major centre of Vancouver's LGBTQ+ community.",
+                "Vancouver hosts an annual Pride Parade and Festival that attracts large crowds.",
+                "Vancouver's public art includes colourful murals, sculptures, and unusual street installations.",
+                "The A-maze-ing Laughter sculptures in Morton Park feature large bronze figures laughing.",
+                "Vancouver's Inukshuk sculpture at English Bay became a symbol associated with the 2010 Winter Olympics.",
+                "The Vancouver Art Gallery occupies a former provincial courthouse in the downtown area.",
+                "Vancouver is home to the Orpheum, a historic theatre known for its ornate interior and concerts.",
+                "The Commodore Ballroom is a legendary Vancouver music venue that has hosted many famous performers.",
+                "Vancouver's music scene has helped launch internationally recognized artists and bands.",
+                "The city has a strong independent film culture, supported by festivals such as the Vancouver International Film Festival.",
+                "The Vancouver International Film Festival is one of the largest film festivals in North America by the number of films screened.",
+                "Vancouver's film industry frequently doubles the city for locations in the United States and other settings.",
+                "The television series The X-Files filmed extensively in the Vancouver area during its early seasons.",
+                "Many scenes from the television series Supernatural were filmed in and around Vancouver.",
+                "Vancouver's forests, mountains, and urban streets make it a popular filming location for many genres.",
+                "The city has a large technology sector that includes software, gaming, animation, and visual effects companies.",
+                "Vancouver is an important centre for video game development in Canada.",
+                "Several major visual effects studios have operated in Vancouver because of its film industry and production infrastructure.",
+                "Vancouver's port is one of Canada's busiest ports and a major gateway for trade with Asia.",
+                "The Port of Vancouver handles a wide variety of cargo, including grain, containers, coal, and forest products.",
+                "Burrard Inlet separates much of Vancouver from the North Shore mountains.",
+                "The Lions Gate Bridge connects Vancouver's downtown peninsula with the North Shore.",
+                "The Lions Gate Bridge opened in 1938 and is one of Vancouver's most recognizable landmarks.",
+                "The Second Narrows crossing is officially called the Ironworkers Memorial Second Narrows Crossing.",
+                "Vancouver's False Creek is a small inlet surrounded by downtown neighbourhoods and waterfront paths.",
+                "Science World is housed in a distinctive geodesic dome at the eastern end of False Creek.",
+                "The dome now occupied by Science World was built for Expo 86.",
+                "Vancouver hosted Expo 86, a world's fair themed around transportation and communication.",
+                "The SkyTrain and SeaBus were among the major transportation features associated with Vancouver's Expo 86 era.",
+                "The SeaBus is a passenger ferry that connects downtown Vancouver with North Vancouver across Burrard Inlet.",
+                "Vancouver's bike network includes protected cycling lanes and routes through many residential neighbourhoods.",
+                "The city has a public bike-share system called Mobi by Rogers.",
+                "Vancouver is famous for its sushi restaurants and access to fresh Pacific seafood.",
+                "The California roll is widely associated with North American sushi culture, and Vancouver is among the cities that helped popularize it.",
+                "Vancouver's food scene reflects its multicultural population, with especially strong Chinese, Japanese, Korean, South Asian, and Filipino influences.",
+                "The Richmond Night Market, just outside Vancouver, is one of the region's best-known seasonal food and shopping attractions.",
+                "Vancouver's surrounding waters are home to marine wildlife, including seals, sea lions, and several whale species.",
+                "Orcas can sometimes be spotted on whale-watching trips departing from the Vancouver area.",
+                "Bald eagles are frequently seen around Vancouver, particularly near waterfronts and forested areas.",
+                "Vancouver combines ocean beaches, dense urban neighbourhoods, and nearby mountain wilderness within a relatively compact metropolitan region."
+            ]},
+            {
+                name: "TORONTO, ON", short: "Toronto", tz: "America/Toronto",
+                lat: 43.6532, lon: -79.3832,
+                bg: "{% static 'pages/images/toronto.jpg' %}",
+                facts: [
+                "Toronto is the capital of Ontario and the largest city in Canada by population.",
+                "Toronto was originally known as York before being renamed in 1834.",
+                "York was founded as a settlement in 1793 by Lieutenant Governor John Graves Simcoe.",
+                "Toronto's name comes from an Indigenous word commonly interpreted as referring to a place where trees stand in water.",
+                "Toronto is located on the northwestern shore of Lake Ontario.",
+                "Toronto is one of the most multicultural cities in the world, with residents tracing their roots to communities across the globe.",
+                "More than 200 ethnic origins have been reported by residents of Toronto.",
+                "Hundreds of languages are spoken across the Greater Toronto Area.",
+                "Toronto is often nicknamed 'The 6ix,' a nickname popularized by rapper Drake.",
+                "The nickname 'The 6ix' is commonly associated with Toronto's six former municipalities that amalgamated in 1998.",
+                "Toronto amalgamated with several surrounding municipalities in 1998 to form the modern City of Toronto.",
+                "Toronto's iconic CN Tower was completed in 1976.",
+                "The CN Tower was once the tallest freestanding structure in the world.",
+                "The CN Tower stands approximately 553 metres tall, including its antenna.",
+                "The CN Tower's EdgeWalk lets visitors walk around the outside of a platform near the top while attached to a safety harness.",
+                "The CN Tower has a glass floor that allows visitors to look straight down at the ground below.",
+                "On clear days, visitors to the CN Tower can see far across Lake Ontario.",
+                "Toronto's skyline is one of the most recognizable in North America.",
+                "Toronto has more than 1,000 high-rise buildings, making it one of North America's major skyscraper cities.",
+                "The Toronto Islands offer beaches, parks, and skyline views just a short ferry ride from downtown.",
+                "The Toronto Islands are actually a chain of small islands connected by walkways and bridges.",
+                "The Toronto Islands were shaped in part by a severe storm in 1858 that separated them from the mainland.",
+                "Cars are largely prohibited on the Toronto Islands, making them a peaceful escape from downtown traffic.",
+                "Hanlan's Point Beach on the Toronto Islands includes an officially designated clothing-optional section.",
+                "Centre Island is one of the most popular destinations for families visiting the Toronto Islands.",
+                "The Toronto Islands are home to Centreville Amusement Park, a family attraction with vintage-style rides.",
+                "The Toronto Islands offer some of the best panoramic views of Toronto's downtown skyline.",
+                "Toronto's PATH is an extensive underground pedestrian network connecting offices, shops, and transit stations.",
+                "The PATH network stretches for more than 30 kilometres of walkways beneath downtown Toronto.",
+                "Toronto's PATH is especially useful during cold winters because it lets people travel underground between many downtown destinations.",
+                "Toronto's Union Station is Canada's busiest passenger transportation hub.",
+                "Union Station opened in 1927 and is recognized for its grand Beaux-Arts architectural design.",
+                "Toronto's subway system began operating in 1954.",
+                "The original Toronto subway line ran along Yonge Street between Union Station and Eglinton Avenue.",
+                "Toronto's Yonge Street was once widely described as the longest street in the world, although that claim depends on how the road is defined.",
+                "The Toronto Transit Commission operates the city's subway, streetcar, and bus services.",
+                "Toronto has one of the largest streetcar networks in North America.",
+                "Toronto's streetcars are a distinctive feature of its downtown streets.",
+                "The historic Distillery District features preserved Victorian-era industrial buildings.",
+                "The Distillery District was once home to the Gooderham and Worts Distillery, one of the largest distilleries in the world during the 19th century.",
+                "The Distillery District is now known for its pedestrian streets, art galleries, restaurants, and independent shops.",
+                "Kensington Market is one of Toronto's most colourful and culturally diverse neighbourhoods.",
+                "Kensington Market is known for its vintage stores, independent businesses, street art, and international food.",
+                "Kensington Market became a National Historic Site of Canada in 2006.",
+                "Toronto's Chinatown is one of the largest Chinese cultural and commercial districts in North America.",
+                "Toronto has multiple Chinatowns and Chinese commercial districts spread across the city and suburbs.",
+                "Little Italy along College Street is famous for its restaurants, cafes, and lively nightlife.",
+                "Greektown on the Danforth is known for its Greek restaurants and annual cultural celebrations.",
+                "Toronto's Little India neighbourhood is centred around Gerrard Street East.",
+                "Toronto's Koreatown is known for Korean restaurants, bakeries, karaoke bars, and shops.",
+                "The Bloor-Yorkville neighbourhood is known for luxury shopping, upscale restaurants, and art galleries.",
+                "Queen Street West is famous for its independent fashion stores, creative businesses, and nightlife.",
+                "Toronto's Graffiti Alley is a popular destination for colourful street art and photography.",
+                "The Royal Ontario Museum is one of Canada's largest museums of natural history and world cultures.",
+                "The Royal Ontario Museum's modern Michael Lee-Chin Crystal addition has an angular design that resembles a giant crystal.",
+                "The Art Gallery of Ontario houses an extensive collection of Canadian and international art.",
+                "The Art Gallery of Ontario's main building was redesigned and expanded by architect Frank Gehry, who grew up in Toronto.",
+                "Toronto's Casa Loma is a Gothic Revival mansion completed in 1914.",
+                "Casa Loma has secret passages, towers, gardens, and rooms designed to resemble a European castle.",
+                "Casa Loma has appeared in numerous films and television productions.",
+                "The Hockey Hall of Fame is located in downtown Toronto.",
+                "The Hockey Hall of Fame contains exhibits dedicated to the history of ice hockey and its greatest players.",
+                "Toronto is home to the Toronto Maple Leafs, one of the National Hockey League's Original Six franchises.",
+                "The Toronto Raptors won their first NBA championship in 2019.",
+                "The Raptors became the first NBA team based outside the United States to win an NBA championship.",
+                "Toronto's Scotiabank Arena hosts Toronto Raptors basketball games and Toronto Maple Leafs hockey games.",
+                "The Toronto Blue Jays won back-to-back World Series championships in 1992 and 1993.",
+                "The Blue Jays were the first team based outside the United States to win a World Series.",
+                "The Rogers Centre, formerly known as the SkyDome, opened in 1989.",
+                "The Rogers Centre was the first stadium in the world to feature a fully retractable motorized roof.",
+                "The Toronto FC soccer team plays its home matches at BMO Field.",
+                "Toronto hosted the Pan American Games in 2015.",
+                "Toronto is scheduled to host matches during the 2026 FIFA World Cup.",
+                "Toronto's BMO Field is being used as a World Cup venue under the tournament's Toronto Stadium designation.",
+                "The Canadian National Exhibition, commonly called the CNE or 'the Ex,' is an annual late-summer fair in Toronto.",
+                "The CNE began in 1879 and is one of Canada's longest-running annual exhibitions.",
+                "The CNE is famous for its carnival rides, concerts, games, and unusual deep-fried foods.",
+                "The Royal Agricultural Winter Fair is a major annual agricultural event held in Toronto.",
+                "Toronto hosts the Toronto International Film Festival, one of the world's most influential film festivals.",
+                "The Toronto International Film Festival is commonly abbreviated as TIFF.",
+                "TIFF attracts filmmakers, actors, journalists, and movie fans from around the world.",
+                "The Toronto International Film Festival's People's Choice Award has a history of recognizing films that later become major awards-season contenders.",
+                "Toronto's entertainment district contains theatres, concert venues, restaurants, and nightclubs.",
+                "The historic Elgin and Winter Garden Theatre is the world's last surviving double-decker theatre of its kind.",
+                "Toronto's Massey Hall opened in 1894 and is one of Canada's most celebrated concert venues.",
+                "Toronto has a thriving music scene that has produced internationally successful artists across many genres.",
+                "Drake grew up in Toronto and frequently references the city in his music.",
+                "The Weeknd was born and raised in the Toronto area.",
+                "Toronto's music scene includes influential hip-hop, R&B, indie rock, electronic, and jazz communities.",
+                "Toronto is a major centre for Canada's film and television production industry.",
+                "Toronto is sometimes nicknamed 'Hollywood North' because many film and television productions take place there.",
+                "The city frequently stands in for New York City and other locations in movies and television shows.",
+                "Toronto's skyline and neighbourhoods have appeared in productions ranging from superhero movies to television dramas.",
+                "The Toronto Zoo covers approximately 287 hectares, making it one of the largest zoos by land area in North America.",
+                "The Toronto Zoo is home to animals from habitats around the world, including African savannas and tropical rainforests.",
+                "High Park is Toronto's largest public park, covering approximately 161 hectares.",
+                "High Park features walking trails, sports facilities, gardens, and a small zoo.",
+                "High Park's cherry blossoms attract large crowds each spring.",
+                "The cherry trees in High Park include some gifted to Toronto by Japan in 1959.",
+                "The Toronto Botanical Garden features themed gardens and horticultural displays in the city's northeast.",
+                "Evergreen Brick Works is a former industrial site transformed into an environmental community and cultural centre.",
+                "Evergreen Brick Works sits in the Don Valley and is surrounded by ravines and natural trails.",
+                "Toronto has an extensive ravine system that brings forests and wildlife into the urban landscape.",
+                "Toronto's ravines support wildlife such as foxes, coyotes, raccoons, and many bird species.",
+                "The Don Valley and Humber River valleys provide green corridors through large parts of the city.",
+                "Toronto's waterfront has undergone extensive redevelopment, adding parks, trails, residential areas, and cultural spaces.",
+                "Sugar Beach is a downtown Toronto waterfront park known for its pink umbrellas and sandy shoreline.",
+                "The Toronto Music Garden was inspired by the structure of Johann Sebastian Bach's First Suite for Unaccompanied Cello.",
+                "Toronto's St. Lawrence Market has been a major public market site for more than two centuries.",
+                "National Geographic named St. Lawrence Market one of the world's best food markets in a widely cited 2012 ranking.",
+                "The Gooderham Building, also known as Toronto's Flatiron Building, is a distinctive triangular landmark.",
+                "Toronto's Old City Hall opened in 1899 and features a prominent clock tower.",
+                "Nathan Phillips Square is home to Toronto's famous illuminated city sign.",
+                "Nathan Phillips Square becomes a popular outdoor skating destination during winter.",
+                "Toronto's annual Cavalcade of Lights traditionally features the lighting of a large Christmas tree at Nathan Phillips Square.",
+                "The Toronto sign was originally installed for the 2015 Pan American Games.",
+                "Toronto's weather can change quickly because of its location beside Lake Ontario.",
+                "Lake Ontario can moderate temperatures along Toronto's waterfront compared with some inland areas.",
+                "Toronto experiences cold winters and warm, often humid summers.",
+                "Toronto's fall colours can be spectacular in its ravines, parks, and nearby conservation areas.",
+                "Toronto is within easy reach of Niagara Falls, one of the world's most famous natural attractions.",
+                "The Greater Toronto Area includes four regional municipalities surrounding the City of Toronto: Durham, Halton, Peel, and York.",
+                "The Greater Toronto Area is one of Canada's most economically important metropolitan regions.",
+                "Toronto is a major Canadian financial centre, and its financial district is home to the Toronto Stock Exchange.",
+                "The Toronto Stock Exchange is one of the world's largest stock exchanges by market capitalization.",
+                "Toronto is an important centre for technology, artificial intelligence research, and startup companies.",
+                "The University of Toronto is one of Canada's most prominent research universities.",
+                "The University of Toronto's St. George campus includes historic buildings and green spaces in the heart of downtown.",
+                "The University of Toronto was founded in 1827 as King's College.",
+                "The University of Toronto is associated with the development of insulin as a medical treatment in the early 1920s.",
+                "The discovery of insulin by Frederick Banting, Charles Best, and their collaborators is closely connected to Toronto's scientific history.",
+                "York University is one of Canada's largest universities by student population.",
+                "Toronto Metropolitan University, formerly Ryerson University, is located in the downtown core.",
+                "Toronto is home to the Ontario Science Centre, which opened in 1969 and helped popularize interactive science exhibits in Canada.",
+                "The Ontario Science Centre's original building was designed by architect Raymond Moriyama.",
+                "Toronto's Aga Khan Museum showcases Islamic art, Iranian art, and Muslim cultural heritage.",
+                "The Aga Khan Museum's architecture combines contemporary design with influences from Islamic architectural traditions.",
+                "Toronto's Bata Shoe Museum explores the cultural history of footwear from around the world.",
+                "The Bata Shoe Museum's collection includes shoes from different eras, cultures, and historical figures.",
+                "Toronto is home to Black Creek Pioneer Village, an open-air museum recreating aspects of 19th-century Ontario life.",
+                "Toronto's annual Pride celebrations are among the largest LGBTQ+ events in the world.",
+                "Toronto's Church and Wellesley neighbourhood is a major hub for LGBTQ+ nightlife and community events.",
+                "Toronto's Caribana celebration, now known as the Toronto Caribbean Carnival, celebrates Caribbean culture with music, dancing, and colourful costumes.",
+                "The Toronto Caribbean Carnival is one of North America's largest Caribbean cultural festivals.",
+                "Toronto's Taste of the Danforth festival has celebrated Greek food and culture along the Danforth.",
+                "Toronto is known for its peameal bacon sandwiches, a local specialty often associated with St. Lawrence Market.",
+                "Peameal bacon is traditionally made from pork loin rolled in cornmeal rather than dried peas.",
+                "Toronto's signature street foods include hot dogs sold from street carts throughout the downtown area.",
+                "The city has a vibrant food-truck scene featuring cuisines from many different countries.",
+                "Toronto's diverse food culture makes it possible to find regional dishes from communities across the world.",
+                "Toronto's raccoons are so common that they have become unofficial symbols of the city's urban wildlife.",
+                "Toronto's raccoons are notorious for exploring garbage bins and finding creative ways to access food.",
+                "The city has experienced occasional lake-effect snow when weather conditions bring cold air across Lake Ontario.",
+                "Toronto's name is pronounced 'tuh-RON-toh' by many locals, often with the middle syllable softened.",
+                "The Toronto Islands were once home to several communities before major storms and redevelopment changed the area.",
+                "The Leslie Street Spit is a man-made peninsula that has become an important urban wildlife habitat.",
+                "Tommy Thompson Park, located on the Leslie Street Spit, is a popular destination for birdwatching and cycling.",
+                "The Toronto waterfront provides habitat for migratory birds travelling along the Great Lakes region.",
+                "Toronto's Rouge National Urban Park protects forests, wetlands, meadows, and farmland within the metropolitan area.",
+                "Rouge National Urban Park is one of the largest urban national parks in North America.",
+                "Toronto combines a dense downtown skyline with extensive parks, ravines, cultural neighbourhoods, and a large freshwater shoreline."]}];
+        window.MOBILE_BG = "{% static 'pages/images/wallpaper.png' %}";   // your wallpaper's real filename
+    </script>
+    <script src="{% static 'pages/js/greeting.js' %}"></script>
+    <script src="{% static 'pages/js/rain.js' %}"></script>
+    <script src="{% static 'pages/js/weather.js' %}"></script>
+    <script src="{% static 'pages/js/scene.js' %}"></script>
+</body>
+</html>

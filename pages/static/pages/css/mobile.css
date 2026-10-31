@@ -1,0 +1,256 @@
+/* mobile.css: loaded only on narrow screens via media="(max-width: 800px)" in home.html */
+
+/* ---------- wallpaper: blurred, with rain on top (set up by scene.js and rain.js) ---------- */
+
+/* the wallpaper stays visible on every slide; desktop fades it to black on the later slides */
+body.mobile #bg-a {
+    opacity: 1;
+}
+
+/* the rain stays on during the interests and music slides too */
+body.mobile #rain,
+body.mobile.ended #rain {
+    opacity: 1;
+}
+
+body.mobile #bg-b {
+    display: none;
+}
+
+/* ---------- things phones don't get ---------- */
+.scroll-hint,
+.interest-pics,
+.music-divider,
+.outreach-pic {
+    display: none;
+}
+
+body.mobile .greeting-box,
+body.mobile .location {
+    display: none;
+}
+
+/* ---------- intro slide ---------- */
+
+/* nameplate: the title is unchanged; just closer to the corner */
+body.mobile .nameplate {
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+/* weather: same info, no window around it, top right */
+body.mobile .glass-card {
+    top: 1.5rem;
+    padding: 0;
+    gap: 0.6rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+
+    left: auto;                /* in case the desktop rule sets a left position */
+    right: 1.5rem;
+    width: auto;               /* shrink to fit the content instead of a fixed width */
+    min-width: 0;
+    max-width: none;
+    justify-content: flex-end;
+}
+
+body.mobile .weather-icon img {
+    width:  3.6rem;
+    height: 2.8rem;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+body.mobile .weather-desc  { font-size: 1.25rem; }
+body.mobile .weather-range { font-size: 1.05rem; }
+
+/* the blurb: smaller, along the bottom */
+body.m-intro .about-blurb {
+    display: block !important;   /* overrides the rule that hides blurbs on narrow screens */
+    position: fixed;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 2rem;
+    max-width: none;
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    opacity: 1;
+    pointer-events: auto;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.mobile .site-title {
+    font-size: 2.6rem;     /* bump this up or down to taste */
+}
+
+/* ---------- interests slides (first pass) ---------- */
+body.mobile .interests {
+    top: 6.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+body.mobile .interests-title {
+    font-size: 2rem;
+}
+
+body.mobile .interest-more > .interest-desc {
+    max-width: none;
+    font-size: 1rem;
+}
+
+/* ---------- music slide (first pass) ---------- */
+body.mobile .music {
+    grid-template-columns: 1fr;
+    top: 6.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: none;
+    gap: 1.5rem;
+}
+
+body.mobile .music-title   { font-size: 1.4rem; }
+body.mobile .music-sub     { font-size: 0.9rem; margin-bottom: 0.7rem; }
+body.mobile .music-art     { width: 2.8rem; height: 2.8rem; }
+body.mobile .music-primary { font-size: 1.05rem; }
+body.mobile .music-secondary { font-size: 0.85rem; }
+
+body.mobile .bg-layer {
+    filter: blur(8px) brightness(0.9);
+}
+
+/* footer links on phones: a vertical list under the nameplate, only on the landing slide */
+body.mobile .site-links {
+    position: static;               /* sits right under the title, inside the nameplate */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.7rem;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: none;               /* disappears right away when the visitor scrolls */
+}
+
+body.m-intro .site-links {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.4s ease;
+}
+
+/* last slide: back to the footer along the bottom */
+body.mobile.finished .site-links {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.6s ease 0.6s;
+}
+
+body.mobile .site-links a,
+body.mobile .site-links .handle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1;
+}
+
+body.mobile .site-links svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+}
+
+body.mobile .about-suffix {
+    display: none;
+}
+
+/* the highlighted interest's picture sits right under its description */
+body.mobile .interest-inline-pic {
+    display: block;
+    width: 100%;
+    height: clamp(9rem, 24vh, 14rem);
+    margin-top: 0.8rem;
+    object-fit: cover;
+    border-radius: 22px;
+    corner-shape: squircle;     /* smooth squircle curve where supported */
+}
+
+/* ---------- music slide + outreach slide on phones ---------- */
+
+/* every column: no desktop lift, and a fade */
+body.mobile .music-col {
+    align-self: start;
+    margin-top: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* tracks and artists keep their own rows */
+body.mobile .music-col:nth-of-type(1) { grid-row: 1; grid-column: 1; }
+body.mobile .music-col:nth-of-type(2) { grid-row: 2; grid-column: 1; }
+
+/* outreach sits over both rows, hidden until its own slide */
+body.mobile .outreach {
+    grid-row: 1 / 3;
+    grid-column: 1;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* on the outreach slide: it fades in and the lists fade out */
+body.mobile.m-outreach .outreach {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.mobile.m-outreach .music-col:not(.outreach) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* outreach sizing */
+body.mobile .outreach-list li + li { margin-top: 0.9rem; }
+body.mobile .outreach-name { font-size: 1.3rem; }
+body.mobile .outreach-desc { font-size: 0.95rem; }
+
+body.mobile .outreach-pic {
+    display: block;
+    height: clamp(8rem, 22vh, 13rem);
+}
+
+body.mobile .scrollbar {
+    top: 1.5rem;
+    bottom: 1.5rem;
+    right: 0.4rem;
+    width: 4px;
+}
+
+/* dark shadow instead of the white halo, since phones have the wallpaper behind the text */
+body.mobile.ended .site-title,
+body.mobile.ended .about-blurb,
+body.mobile.ended .music-blurb,
+body.mobile.ended .interests,
+body.mobile.ended .interest-pics,
+body.mobile.ended .music,
+body.mobile.ended .site-links {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55)) !important;
+}
